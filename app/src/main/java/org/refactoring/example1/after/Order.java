@@ -23,7 +23,7 @@ public class Order {
         this.lineItems = lineItems;
     }
 
-    public double calculateLineItemSubTotal() {
+    private double calculateLineItemSubTotal() {
         double subTotal = 0;
         for (LineItem lineItem : lineItems) {
             subTotal += lineItem.calculateSubTotal();
@@ -31,7 +31,7 @@ public class Order {
         return subTotal;
     }
 
-    public double calculateDiscount() {
+    private double calculateDiscount() {
         double subTotal = calculateLineItemSubTotal();
         if (subTotal > 1000) {
             return 0.1; // 10% discount
@@ -43,15 +43,15 @@ public class Order {
         return 0; // No discount
     }
 
-    public double calculateDiscountedSubTotal() {
+    private double calculateDiscountedSubTotal() {
         return calculateLineItemSubTotal() * (1 - calculateDiscount());
     }
 
-    public int calculateShipping() {
+    private int calculateShipping() {
         return calculateDiscountedSubTotal() < 250 ? 20 : 0;
     }
 
-    public double calculateUntaxedTotal() {
+    private double calculateUntaxedTotal() {
         return calculateDiscountedSubTotal() + calculateShipping();
     }
 
