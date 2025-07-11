@@ -1,9 +1,8 @@
 package org.refactoring.example3.after;
 
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.NonNull;
 
-@RequiredArgsConstructor
 @Getter
 public enum LeaseTerm {
     MONTH_TO_MONTH(1.55),
@@ -32,5 +31,9 @@ public enum LeaseTerm {
     TWENTY_FOUR_MONTH(0.88),
     ;
 
-    private final double termAdjustment;
+    LeaseTerm(@NonNull Double termAdjustment) {
+        this.termAdjustment = new Money(termAdjustment);
+    }
+
+    private final Money termAdjustment;
 }
