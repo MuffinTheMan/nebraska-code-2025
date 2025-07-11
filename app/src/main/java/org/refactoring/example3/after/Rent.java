@@ -20,8 +20,11 @@ public class Rent {
     private LeaseTerm term;
 
     public double calculateMonthlyPayment() {
-        double termAdjustment = term.getTermAdjustment();
+        return Precision.round(calculateTermAdjustedTotalRent() + utilitiesCost, 2);
+    }
 
-        return Precision.round(((baseRent + amenityPremium) * termAdjustment) + utilitiesCost, 2);
+    public double calculateTermAdjustedTotalRent() {
+        double termAdjustment = term.getTermAdjustment();
+        return (baseRent + amenityPremium) * termAdjustment;
     }
 }
