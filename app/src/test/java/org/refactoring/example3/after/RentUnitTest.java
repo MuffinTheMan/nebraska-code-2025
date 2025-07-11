@@ -155,8 +155,8 @@ class RentUnitTest {
         // Rounding scenarios
         "979.95,1021.93,-25.21,102.84,TWENTY_FOUR_MONTH",
     })
-    void calculateMonthlyRent(double expectedValue, double baseRent, double amenityPremium, double utilitiesCost, LeaseTerm term) {
+    void calculateMonthlyPayment(double expectedValue, double baseRent, double amenityPremium, double utilitiesCost, LeaseTerm term) {
         var rent = new Rent(baseRent, amenityPremium, utilitiesCost, term);
-        assertThat(rent.calculateMonthlyRent()).isEqualTo(expectedValue);
+        assertThat(rent.calculateMonthlyPayment()).isEqualTo(expectedValue);
     }
 }
