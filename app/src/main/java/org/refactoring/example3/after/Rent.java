@@ -4,27 +4,30 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
-import org.apache.commons.math3.util.Precision;
 
 @Getter
 @Setter
 @AllArgsConstructor
 public class Rent {
     @NonNull
-    private Double baseRent;
+    private Money baseRent;
     @NonNull
-    private Double amenityPremium;
+    private Money amenityPremium;
     @NonNull
-    private Double utilitiesCost;
+    private Money utilitiesCost;
     @NonNull
     private LeaseTerm term;
 
-    public double calculateMonthlyPayment() {
-        return Precision.round(calculateTermAdjustedTotalRent() + utilitiesCost, 2);
+    public Rent(@NonNull Double baseRent, @NonNull Double amenityPremium, @NonNull Double utilitiesCost, @NonNull LeaseTerm term) {
+        this(new Money(baseRent), new Money(amenityPremium), new Money(utilitiesCost), term);
     }
 
-    public double calculateTermAdjustedTotalRent() {
+    public double calculateMonthlyPayment() {
+        return calculateTermAdjustedTotalRent().add(utilitiesCost).roundedToNearestCent();
+    }
+
+    public Money calculateTermAdjustedTotalRent() {
         double termAdjustment = term.getTermAdjustment();
-        return (baseRent + amenityPremium) * termAdjustment;
+        return (baseRent.add(amenityPremium)).multiply(termAdjustment);
     }
 }

@@ -3,3 +3,5 @@
 3. Rename method 'calculateMonthlyRent' to 'calculateMonthlyPayment' for clarity.
 4. Ensure unit tests still pass
 5. Move calculation of the term-adjusted total rent a separate method named 'calculateTermAdjustedTotalRent'. This makes the 'calculateMonthlyPayment' method more readable and easier to understand and allows for getting a more detailed breakdown if printing more itemized billing details is desired.
+6. Create `Money` class and use it under the hood for `Rent` and `LeaseTerm` for fixed precision calculations
+7. Ensure unit tests still pass
