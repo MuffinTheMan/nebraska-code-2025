@@ -8,10 +8,6 @@ public record EmailAddress(String fullEmail) {
         }
     }
 
-    public boolean isValidEmail() {
-        return fullEmail != null && fullEmail.matches("^[\\w.%+-]+@[\\w.-]+\\.[a-zA-Z]{2,}$");
-    }
-
     public String getDomain() {
         if (fullEmail == null || !fullEmail.contains("@")) {
             throw new IllegalArgumentException("Invalid email");

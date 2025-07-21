@@ -8,19 +8,22 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 
 class EmailAddressUnitTest {
     @Test
-    void isValidEmail() {
+    void constructor() {
         assertAll(
-            () -> assertThatThrownBy(() -> new EmailAddress(null).isValidEmail()).isInstanceOf(IllegalArgumentException.class),
-            () -> assertThatThrownBy(() -> new EmailAddress("").isValidEmail()).isInstanceOf(IllegalArgumentException.class),
-            () -> assertThatThrownBy(() -> new EmailAddress("bademail").isValidEmail()).isInstanceOf(IllegalArgumentException.class),
-            () -> assertThatThrownBy(() -> new EmailAddress("@").isValidEmail()).isInstanceOf(IllegalArgumentException.class),
-            () -> assertThatThrownBy(() -> new EmailAddress("@hi.com").isValidEmail()).isInstanceOf(IllegalArgumentException.class),
-            () -> assertThatThrownBy(() -> new EmailAddress("a@gmail").isValidEmail()).isInstanceOf(IllegalArgumentException.class),
-            () -> assertThat(new EmailAddress("me@gmail.com").isValidEmail()).isTrue(),
-            () -> assertThat(new EmailAddress("me@gmail.org").isValidEmail()).isTrue(),
-            () -> assertThat(new EmailAddress("me@gmail.net").isValidEmail()).isTrue(),
-            () -> assertThat(new EmailAddress("me@gmail.dev").isValidEmail()).isTrue(),
-            () -> assertThat(new EmailAddress("a+b@gmail.dev").isValidEmail()).isTrue()
+            () -> assertThatThrownBy(() -> new EmailAddress(null)).isInstanceOf(IllegalArgumentException.class),
+            () -> assertThatThrownBy(() -> new EmailAddress("")).isInstanceOf(IllegalArgumentException.class),
+            () -> assertThatThrownBy(() -> new EmailAddress("bademail")).isInstanceOf(IllegalArgumentException.class),
+            () -> assertThatThrownBy(() -> new EmailAddress("@")).isInstanceOf(IllegalArgumentException.class),
+            () -> assertThatThrownBy(() -> new EmailAddress("@hi.com")).isInstanceOf(IllegalArgumentException.class),
+            () -> assertThatThrownBy(() -> new EmailAddress("a@gmail")).isInstanceOf(IllegalArgumentException.class),
+            () -> assertThat(new EmailAddress("me@gmail.com").fullEmail()).isEqualTo("me@gmail.com"),
+            () -> assertThat(new EmailAddress("me@gmail.org").fullEmail()).isEqualTo("me@gmail.org"),
+            () -> assertThat(new EmailAddress("me@gmail.net").fullEmail()).isEqualTo("me@gmail.net"),
+            () -> assertThat(new EmailAddress("me@gmail.dev").fullEmail()).isEqualTo("me@gmail.dev"),
+            () -> assertThat(new EmailAddress("a+b@gmail.dev").fullEmail()).isEqualTo("a+b@gmail.dev"),
+            () -> assertThat(new EmailAddress("a+b@gmail.dev ").fullEmail()).isEqualTo("a+b@gmail.dev"),
+            () -> assertThat(new EmailAddress(" a+b@gmail.dev").fullEmail()).isEqualTo("a+b@gmail.dev"),
+            () -> assertThat(new EmailAddress(" a+b@gmail.dev ").fullEmail()).isEqualTo("a+b@gmail.dev")
         );
     }
 
