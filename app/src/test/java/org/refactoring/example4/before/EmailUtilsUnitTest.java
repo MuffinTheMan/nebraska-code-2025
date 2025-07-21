@@ -11,7 +11,17 @@ class EmailUtilsUnitTest {
     @Test
     void isValidEmail() {
         assertAll(
-            () -> assertThat(EmailUtils.isValidEmail("")).isFalse()
+            () -> assertThat(org.refactoring.example4.after.EmailUtils.isValidEmail(null)).isFalse(),
+            () -> assertThat(org.refactoring.example4.after.EmailUtils.isValidEmail("")).isFalse(),
+            () -> assertThat(org.refactoring.example4.after.EmailUtils.isValidEmail("bademail")).isFalse(),
+            () -> assertThat(org.refactoring.example4.after.EmailUtils.isValidEmail("@")).isFalse(),
+            () -> assertThat(org.refactoring.example4.after.EmailUtils.isValidEmail("@hi.com")).isFalse(),
+            () -> assertThat(org.refactoring.example4.after.EmailUtils.isValidEmail("a@gmail")).isFalse(),
+            () -> assertThat(org.refactoring.example4.after.EmailUtils.isValidEmail("me@gmail.com")).isTrue(),
+            () -> assertThat(org.refactoring.example4.after.EmailUtils.isValidEmail("me@gmail.org")).isTrue(),
+            () -> assertThat(org.refactoring.example4.after.EmailUtils.isValidEmail("me@gmail.net")).isTrue(),
+            () -> assertThat(org.refactoring.example4.after.EmailUtils.isValidEmail("me@gmail.dev")).isTrue(),
+            () -> assertThat(org.refactoring.example4.after.EmailUtils.isValidEmail("a+b@gmail.dev")).isTrue()
         );
     }
 

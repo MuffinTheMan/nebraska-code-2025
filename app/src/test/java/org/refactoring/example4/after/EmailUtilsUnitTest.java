@@ -11,7 +11,17 @@ class EmailUtilsUnitTest {
     @Test
     void isValidEmail() {
         assertAll(
-            () -> assertThat(EmailUtils.isValidEmail("")).isFalse()
+            () -> assertThat(EmailUtils.isValidEmail(null)).isFalse(),
+            () -> assertThat(EmailUtils.isValidEmail("")).isFalse(),
+            () -> assertThat(EmailUtils.isValidEmail("bademail")).isFalse(),
+            () -> assertThat(EmailUtils.isValidEmail("@")).isFalse(),
+            () -> assertThat(EmailUtils.isValidEmail("@hi.com")).isFalse(),
+            () -> assertThat(EmailUtils.isValidEmail("a@gmail")).isFalse(),
+            () -> assertThat(EmailUtils.isValidEmail("me@gmail.com")).isTrue(),
+            () -> assertThat(EmailUtils.isValidEmail("me@gmail.org")).isTrue(),
+            () -> assertThat(EmailUtils.isValidEmail("me@gmail.net")).isTrue(),
+            () -> assertThat(EmailUtils.isValidEmail("me@gmail.dev")).isTrue(),
+            () -> assertThat(EmailUtils.isValidEmail("a+b@gmail.dev")).isTrue()
         );
     }
 
