@@ -9,16 +9,10 @@ public record EmailAddress(String fullEmail) {
     }
 
     public String getDomain() {
-        if (fullEmail == null || !fullEmail.contains("@")) {
-            throw new IllegalArgumentException("Invalid email");
-        }
         return fullEmail.substring(fullEmail.indexOf('@') + 1);
     }
 
     public String getLocalPart() {
-        if (fullEmail == null || !fullEmail.contains("@")) {
-            throw new IllegalArgumentException("Invalid email");
-        }
         return fullEmail.substring(0, fullEmail.indexOf('@'));
     }
 
