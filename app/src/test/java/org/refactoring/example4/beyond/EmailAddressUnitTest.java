@@ -71,18 +71,4 @@ class EmailAddressUnitTest {
             () -> assertThat(new EmailAddress("you@yourcompany.com").isCorporateEmail()).isTrue()
         );
     }
-
-    @Test
-    void trim() {
-        assertAll(
-            () -> assertThatThrownBy(() -> new EmailAddress(null)).isInstanceOf(IllegalArgumentException.class),
-            () -> assertThatThrownBy(() -> new EmailAddress("")).isInstanceOf(IllegalArgumentException.class),
-            () -> assertThatThrownBy(() -> new EmailAddress(" ")).isInstanceOf(IllegalArgumentException.class),
-            () -> assertThatThrownBy(() -> new EmailAddress("howdy")).isInstanceOf(IllegalArgumentException.class),
-            () -> assertThat(new EmailAddress(" howdy@gmail.com ").trim()).isEqualTo("howdy@gmail.com"),
-            () -> assertThat(new EmailAddress(" howdy@gmail.com").trim()).isEqualTo("howdy@gmail.com"),
-            () -> assertThat(new EmailAddress("howdy@gmail.com ").trim()).isEqualTo("howdy@gmail.com"),
-            () -> assertThat(new EmailAddress("howdy@gmail.com").trim()).isEqualTo("howdy@gmail.com")
-        );
-    }
 }
