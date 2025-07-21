@@ -19,4 +19,9 @@ public record EmailAddress(String fullEmail) {
     public boolean isCorporateEmail() {
         return "yourcompany.com".equalsIgnoreCase(getDomain());
     }
+
+    @Override
+    public String toString() {
+        return fullEmail;
+    }
 }

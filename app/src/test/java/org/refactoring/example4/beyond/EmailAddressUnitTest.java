@@ -1,6 +1,8 @@
 package org.refactoring.example4.beyond;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -8,23 +10,31 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 
 class EmailAddressUnitTest {
     @Test
-    void constructor() {
+    void constructor_invalidEmail() {
         assertAll(
             () -> assertThatThrownBy(() -> new EmailAddress(null)).isInstanceOf(IllegalArgumentException.class),
             () -> assertThatThrownBy(() -> new EmailAddress("")).isInstanceOf(IllegalArgumentException.class),
             () -> assertThatThrownBy(() -> new EmailAddress("bademail")).isInstanceOf(IllegalArgumentException.class),
             () -> assertThatThrownBy(() -> new EmailAddress("@")).isInstanceOf(IllegalArgumentException.class),
             () -> assertThatThrownBy(() -> new EmailAddress("@hi.com")).isInstanceOf(IllegalArgumentException.class),
-            () -> assertThatThrownBy(() -> new EmailAddress("a@gmail")).isInstanceOf(IllegalArgumentException.class),
-            () -> assertThat(new EmailAddress("me@gmail.com").fullEmail()).isEqualTo("me@gmail.com"),
-            () -> assertThat(new EmailAddress("me@gmail.org").fullEmail()).isEqualTo("me@gmail.org"),
-            () -> assertThat(new EmailAddress("me@gmail.net").fullEmail()).isEqualTo("me@gmail.net"),
-            () -> assertThat(new EmailAddress("me@gmail.dev").fullEmail()).isEqualTo("me@gmail.dev"),
-            () -> assertThat(new EmailAddress("a+b@gmail.dev").fullEmail()).isEqualTo("a+b@gmail.dev"),
-            () -> assertThat(new EmailAddress("a+b@gmail.dev ").fullEmail()).isEqualTo("a+b@gmail.dev"),
-            () -> assertThat(new EmailAddress(" a+b@gmail.dev").fullEmail()).isEqualTo("a+b@gmail.dev"),
-            () -> assertThat(new EmailAddress(" a+b@gmail.dev ").fullEmail()).isEqualTo("a+b@gmail.dev")
+            () -> assertThatThrownBy(() -> new EmailAddress("a@gmail")).isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {
+        "me@gmail.com",
+        "me@gmail.org",
+        "me@gmail.net",
+        "me@gmail.dev",
+        "a+b@gmail.dev",
+        "a+b@gmail.dev ",
+        " a+b@gmail.dev",
+        " a+b@gmail.dev ",
+    })
+    void toString(String email) {
+        var emailAddress = new EmailAddress(email);
+        assertThat(emailAddress.toString()).isEqualTo(emailAddress.fullEmail());
     }
 
     @Test

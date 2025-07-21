@@ -15,3 +15,5 @@
     7. Ensure all tests pass
     8. Fix edge-case bug in `::isCorporateEmail` (`endsWith` not correct) and add additional test cases
     9. Ensure all tests pass
+    10. Override `::toString` as a nice-to-have (with additional tests)
+    11. Ensure all tests pass
