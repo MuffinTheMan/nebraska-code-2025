@@ -67,7 +67,9 @@ class EmailAddressUnitTest {
             () -> assertThatThrownBy(() -> new EmailAddress("invalid.com")).isInstanceOf(IllegalArgumentException.class),
             () -> assertThat(new EmailAddress("me@gmail.com").isCorporateEmail()).isFalse(),
             () -> assertThat(new EmailAddress("you@hotmail.com").isCorporateEmail()).isFalse(),
+            () -> assertThat(new EmailAddress("jeff@notyourcompany.com").isCorporateEmail()).isFalse(),
             () -> assertThat(new EmailAddress("jeff@yourcompany.com").isCorporateEmail()).isTrue(),
+            () -> assertThat(new EmailAddress("jeff@youRcoMpanY.com").isCorporateEmail()).isTrue(),
             () -> assertThat(new EmailAddress("you@yourcompany.com").isCorporateEmail()).isTrue()
         );
     }

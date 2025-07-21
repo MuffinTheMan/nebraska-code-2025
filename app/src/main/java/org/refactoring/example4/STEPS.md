@@ -13,3 +13,5 @@
     5. Ensure all tests pass
     6. Remove validation logic from `::getDomain` and `::getLocalPart` methods (redundant)
     7. Ensure all tests pass
+    8. Fix edge-case bug in `::isCorporateEmail` (`endsWith` not correct) and add additional test cases
+    9. Ensure all tests pass
