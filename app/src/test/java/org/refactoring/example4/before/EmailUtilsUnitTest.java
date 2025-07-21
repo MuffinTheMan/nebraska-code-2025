@@ -11,17 +11,17 @@ class EmailUtilsUnitTest {
     @Test
     void isValidEmail() {
         assertAll(
-            () -> assertThat(org.refactoring.example4.after.EmailUtils.isValidEmail(null)).isFalse(),
-            () -> assertThat(org.refactoring.example4.after.EmailUtils.isValidEmail("")).isFalse(),
-            () -> assertThat(org.refactoring.example4.after.EmailUtils.isValidEmail("bademail")).isFalse(),
-            () -> assertThat(org.refactoring.example4.after.EmailUtils.isValidEmail("@")).isFalse(),
-            () -> assertThat(org.refactoring.example4.after.EmailUtils.isValidEmail("@hi.com")).isFalse(),
-            () -> assertThat(org.refactoring.example4.after.EmailUtils.isValidEmail("a@gmail")).isFalse(),
-            () -> assertThat(org.refactoring.example4.after.EmailUtils.isValidEmail("me@gmail.com")).isTrue(),
-            () -> assertThat(org.refactoring.example4.after.EmailUtils.isValidEmail("me@gmail.org")).isTrue(),
-            () -> assertThat(org.refactoring.example4.after.EmailUtils.isValidEmail("me@gmail.net")).isTrue(),
-            () -> assertThat(org.refactoring.example4.after.EmailUtils.isValidEmail("me@gmail.dev")).isTrue(),
-            () -> assertThat(org.refactoring.example4.after.EmailUtils.isValidEmail("a+b@gmail.dev")).isTrue()
+            () -> assertThat(EmailUtils.isValidEmail(null)).isFalse(),
+            () -> assertThat(EmailUtils.isValidEmail("")).isFalse(),
+            () -> assertThat(EmailUtils.isValidEmail("bademail")).isFalse(),
+            () -> assertThat(EmailUtils.isValidEmail("@")).isFalse(),
+            () -> assertThat(EmailUtils.isValidEmail("@hi.com")).isFalse(),
+            () -> assertThat(EmailUtils.isValidEmail("a@gmail")).isFalse(),
+            () -> assertThat(EmailUtils.isValidEmail("me@gmail.com")).isTrue(),
+            () -> assertThat(EmailUtils.isValidEmail("me@gmail.org")).isTrue(),
+            () -> assertThat(EmailUtils.isValidEmail("me@gmail.net")).isTrue(),
+            () -> assertThat(EmailUtils.isValidEmail("me@gmail.dev")).isTrue(),
+            () -> assertThat(EmailUtils.isValidEmail("a+b@gmail.dev")).isTrue()
         );
     }
 
