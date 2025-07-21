@@ -10,12 +10,12 @@ class EmailAddressUnitTest {
     @Test
     void isValidEmail() {
         assertAll(
-            () -> assertThat(new EmailAddress(null).isValidEmail()).isFalse(),
-            () -> assertThat(new EmailAddress("").isValidEmail()).isFalse(),
-            () -> assertThat(new EmailAddress("bademail").isValidEmail()).isFalse(),
-            () -> assertThat(new EmailAddress("@").isValidEmail()).isFalse(),
-            () -> assertThat(new EmailAddress("@hi.com").isValidEmail()).isFalse(),
-            () -> assertThat(new EmailAddress("a@gmail").isValidEmail()).isFalse(),
+            () -> assertThatThrownBy(() -> new EmailAddress(null).isValidEmail()).isInstanceOf(IllegalArgumentException.class),
+            () -> assertThatThrownBy(() -> new EmailAddress("").isValidEmail()).isInstanceOf(IllegalArgumentException.class),
+            () -> assertThatThrownBy(() -> new EmailAddress("bademail").isValidEmail()).isInstanceOf(IllegalArgumentException.class),
+            () -> assertThatThrownBy(() -> new EmailAddress("@").isValidEmail()).isInstanceOf(IllegalArgumentException.class),
+            () -> assertThatThrownBy(() -> new EmailAddress("@hi.com").isValidEmail()).isInstanceOf(IllegalArgumentException.class),
+            () -> assertThatThrownBy(() -> new EmailAddress("a@gmail").isValidEmail()).isInstanceOf(IllegalArgumentException.class),
             () -> assertThat(new EmailAddress("me@gmail.com").isValidEmail()).isTrue(),
             () -> assertThat(new EmailAddress("me@gmail.org").isValidEmail()).isTrue(),
             () -> assertThat(new EmailAddress("me@gmail.net").isValidEmail()).isTrue(),
@@ -27,11 +27,11 @@ class EmailAddressUnitTest {
     @Test
     void getDomain() {
         assertAll(
-            () -> assertThatThrownBy(() -> new EmailAddress(null).getDomain()).isInstanceOf(IllegalArgumentException.class),
-            () -> assertThatThrownBy(() -> new EmailAddress("").getDomain()).isInstanceOf(IllegalArgumentException.class),
-            () -> assertThatThrownBy(() -> new EmailAddress("  ").getDomain()).isInstanceOf(IllegalArgumentException.class),
-            () -> assertThatThrownBy(() -> new EmailAddress("invalid").getDomain()).isInstanceOf(IllegalArgumentException.class),
-            () -> assertThatThrownBy(() -> new EmailAddress("invalid.com").getDomain()).isInstanceOf(IllegalArgumentException.class),
+            () -> assertThatThrownBy(() -> new EmailAddress(null)).isInstanceOf(IllegalArgumentException.class),
+            () -> assertThatThrownBy(() -> new EmailAddress("")).isInstanceOf(IllegalArgumentException.class),
+            () -> assertThatThrownBy(() -> new EmailAddress("  ")).isInstanceOf(IllegalArgumentException.class),
+            () -> assertThatThrownBy(() -> new EmailAddress("invalid")).isInstanceOf(IllegalArgumentException.class),
+            () -> assertThatThrownBy(() -> new EmailAddress("invalid.com")).isInstanceOf(IllegalArgumentException.class),
             () -> assertThat(new EmailAddress("howdy@gmail.com").getDomain()).isEqualTo("gmail.com"),
             () -> assertThat(new EmailAddress("me@yahoo.com").getDomain()).isEqualTo("yahoo.com"),
             () -> assertThat(new EmailAddress("you@hotmail.com").getDomain()).isEqualTo("hotmail.com"),
@@ -42,11 +42,11 @@ class EmailAddressUnitTest {
     @Test
     void getLocalPart() {
         assertAll(
-            () -> assertThatThrownBy(() -> new EmailAddress(null).getLocalPart()).isInstanceOf(IllegalArgumentException.class),
-            () -> assertThatThrownBy(() -> new EmailAddress("").getLocalPart()).isInstanceOf(IllegalArgumentException.class),
-            () -> assertThatThrownBy(() -> new EmailAddress("  ").getLocalPart()).isInstanceOf(IllegalArgumentException.class),
-            () -> assertThatThrownBy(() -> new EmailAddress("invalid").getLocalPart()).isInstanceOf(IllegalArgumentException.class),
-            () -> assertThatThrownBy(() -> new EmailAddress("invalid.com").getLocalPart()).isInstanceOf(IllegalArgumentException.class),
+            () -> assertThatThrownBy(() -> new EmailAddress(null)).isInstanceOf(IllegalArgumentException.class),
+            () -> assertThatThrownBy(() -> new EmailAddress("")).isInstanceOf(IllegalArgumentException.class),
+            () -> assertThatThrownBy(() -> new EmailAddress("  ")).isInstanceOf(IllegalArgumentException.class),
+            () -> assertThatThrownBy(() -> new EmailAddress("invalid")).isInstanceOf(IllegalArgumentException.class),
+            () -> assertThatThrownBy(() -> new EmailAddress("invalid.com")).isInstanceOf(IllegalArgumentException.class),
             () -> assertThat(new EmailAddress("howdy@gmail.com").getLocalPart()).isEqualTo("howdy"),
             () -> assertThat(new EmailAddress("me@yahoo.com").getLocalPart()).isEqualTo("me"),
             () -> assertThat(new EmailAddress("jeff@yourcompany.com").getLocalPart()).isEqualTo("jeff"),
@@ -57,11 +57,11 @@ class EmailAddressUnitTest {
     @Test
     void isCorporateEmail() {
         assertAll(
-            () -> assertThatThrownBy(() -> new EmailAddress(null).isCorporateEmail()).isInstanceOf(IllegalArgumentException.class),
-            () -> assertThatThrownBy(() -> new EmailAddress("").isCorporateEmail()).isInstanceOf(IllegalArgumentException.class),
-            () -> assertThatThrownBy(() -> new EmailAddress("  ").isCorporateEmail()).isInstanceOf(IllegalArgumentException.class),
-            () -> assertThatThrownBy(() -> new EmailAddress("invalid").isCorporateEmail()).isInstanceOf(IllegalArgumentException.class),
-            () -> assertThatThrownBy(() -> new EmailAddress("invalid.com").isCorporateEmail()).isInstanceOf(IllegalArgumentException.class),
+            () -> assertThatThrownBy(() -> new EmailAddress(null)).isInstanceOf(IllegalArgumentException.class),
+            () -> assertThatThrownBy(() -> new EmailAddress("")).isInstanceOf(IllegalArgumentException.class),
+            () -> assertThatThrownBy(() -> new EmailAddress("  ")).isInstanceOf(IllegalArgumentException.class),
+            () -> assertThatThrownBy(() -> new EmailAddress("invalid")).isInstanceOf(IllegalArgumentException.class),
+            () -> assertThatThrownBy(() -> new EmailAddress("invalid.com")).isInstanceOf(IllegalArgumentException.class),
             () -> assertThat(new EmailAddress("me@gmail.com").isCorporateEmail()).isFalse(),
             () -> assertThat(new EmailAddress("you@hotmail.com").isCorporateEmail()).isFalse(),
             () -> assertThat(new EmailAddress("jeff@yourcompany.com").isCorporateEmail()).isTrue(),
@@ -72,10 +72,10 @@ class EmailAddressUnitTest {
     @Test
     void trim() {
         assertAll(
-            () -> assertThat(new EmailAddress(null).trim()).isNull(),
-            () -> assertThat(new EmailAddress("").trim()).isEqualTo(""),
-            () -> assertThat(new EmailAddress(" ").trim()).isEqualTo(""),
-            () -> assertThat(new EmailAddress("howdy").trim()).isEqualTo("howdy"),
+            () -> assertThatThrownBy(() -> new EmailAddress(null)).isInstanceOf(IllegalArgumentException.class),
+            () -> assertThatThrownBy(() -> new EmailAddress("")).isInstanceOf(IllegalArgumentException.class),
+            () -> assertThatThrownBy(() -> new EmailAddress(" ")).isInstanceOf(IllegalArgumentException.class),
+            () -> assertThatThrownBy(() -> new EmailAddress("howdy")).isInstanceOf(IllegalArgumentException.class),
             () -> assertThat(new EmailAddress(" howdy@gmail.com ").trim()).isEqualTo("howdy@gmail.com"),
             () -> assertThat(new EmailAddress(" howdy@gmail.com").trim()).isEqualTo("howdy@gmail.com"),
             () -> assertThat(new EmailAddress("howdy@gmail.com ").trim()).isEqualTo("howdy@gmail.com"),
