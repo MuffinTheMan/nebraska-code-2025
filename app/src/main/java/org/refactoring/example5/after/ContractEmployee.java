@@ -17,7 +17,12 @@ public class ContractEmployee extends Employee {
     @Override
     public String getPayDescription() {
         return weeklyBonusAmount > 0
-            ? name + " from " + department + " is a contractor and earns $" + calculateWeeklyPay() + " per week (including a $" + weeklyBonusAmount + " weekly bonus)."
-            : name + " from " + department + " is a contractor and earns $" + calculateWeeklyPay() + " per week.";
+            ? name + " from " + department + " is " + getEmployeeTypeDescriptor() + " and earns $" + calculateWeeklyPay() + " per week (including a $" + weeklyBonusAmount + " weekly bonus)."
+            : name + " from " + department + " is " + getEmployeeTypeDescriptor() + " and earns $" + calculateWeeklyPay() + " per week.";
+    }
+
+    @Override
+    public String getEmployeeTypeDescriptor() {
+        return "a contractor";
     }
 }

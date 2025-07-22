@@ -5,3 +5,5 @@
 5. Ensure tests still pass
 6. Move `name`, `department`, and `weeklyBonusAmount` fields up to `Employee` (visibility: `protected`, add `@Getter`)
 7. Ensure tests still pass
+8. Add `Employee::getEmployeeTypeDescriptor` abstract method, implement it in each child and use it in their respective `getPayDescription` implementations
+9. Ensure tests still pass

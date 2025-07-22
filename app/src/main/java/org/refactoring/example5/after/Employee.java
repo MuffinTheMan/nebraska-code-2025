@@ -11,4 +11,6 @@ public abstract class Employee {
     public abstract double calculateWeeklyPay();
 
     public abstract String getPayDescription();
+
+    public abstract String getEmployeeTypeDescriptor();
 }
