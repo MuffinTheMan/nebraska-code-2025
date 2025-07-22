@@ -18,7 +18,7 @@ public class ContractEmployee {
 
     public String getPayDescription() {
         return weeklyBonusAmount > 0
-            ? name + " from " + department + " is a contractor paid $" + calculateWeeklyPay() + " per week (including a $" + weeklyBonusAmount + " weekly bonus)."
-            : name + " from " + department + " is a contractor paid $" + calculateWeeklyPay() + " per week.";
+            ? name + " from " + department + " is a contractor and earns $" + calculateWeeklyPay() + " per week (including a $" + weeklyBonusAmount + " weekly bonus)."
+            : name + " from " + department + " is a contractor and earns $" + calculateWeeklyPay() + " per week.";
     }
 }
