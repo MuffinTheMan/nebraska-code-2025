@@ -7,3 +7,5 @@
 7. Ensure tests still pass
 8. Add `Employee::getEmployeeTypeDescriptor` abstract method, implement it in each child and use it in their respective `getPayDescription` implementations
 9. Ensure tests still pass
+10. Note that `getPayDescription` is identical for `SalariedEmployee` and `ContractEmployee`--move method up to parent
+11. Ensure tests still pass
