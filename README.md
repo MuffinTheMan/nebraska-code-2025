@@ -6,6 +6,6 @@ Each example has its own package (eg `org.refactoring.example4`). Within each ex
 
 ## Resources
 
-* Slides (link TBD)
+* [Slides](https://docs.google.com/presentation/d/1fe9vpRAdlJxuDzQjzqhU3dQ_5PTQyQ55gaF6WkgTh44/edit?usp=sharing)
 * [Refactoring Catalog](https://refactoring.com/catalog/)
 * [Anemic Domain Model article](https://martinfowler.com/bliki/AnemicDomainModel.html)
