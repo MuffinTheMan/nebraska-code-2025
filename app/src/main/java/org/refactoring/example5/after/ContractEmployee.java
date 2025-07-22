@@ -6,7 +6,7 @@ import org.apache.commons.math3.util.Precision;
 
 @Getter
 @Setter
-public class ContractEmployee {
+public class ContractEmployee extends Employee {
     private String name;
     private String department;
     private double weeklyContractAmount;
