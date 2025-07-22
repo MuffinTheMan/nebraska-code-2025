@@ -12,10 +12,12 @@ public class ContractEmployee extends Employee {
     private double weeklyContractAmount;
     private double weeklyBonusAmount;
 
+    @Override
     public double calculateWeeklyPay() {
         return Precision.round(weeklyContractAmount + weeklyBonusAmount, 2);
     }
 
+    @Override
     public String getPayDescription() {
         return weeklyBonusAmount > 0
             ? name + " from " + department + " is a contractor paid $" + calculateWeeklyPay() + " per week (including a $" + weeklyBonusAmount + " weekly bonus)."

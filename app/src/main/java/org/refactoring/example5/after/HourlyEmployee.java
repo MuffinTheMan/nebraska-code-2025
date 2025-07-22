@@ -13,10 +13,12 @@ public class HourlyEmployee extends Employee {
     private double hoursWorked;
     private double weeklyBonusAmount;
 
+    @Override
     public double calculateWeeklyPay() {
         return Precision.round((hourlyRate * hoursWorked) + weeklyBonusAmount, 2);
     }
 
+    @Override
     public String getPayDescription() {
         return weeklyBonusAmount > 0
             ? name + " from " + department + " is hourly and earns $" + calculateWeeklyPay() + " for " + hoursWorked + " hours (including a $" + weeklyBonusAmount + " weekly bonus)."
