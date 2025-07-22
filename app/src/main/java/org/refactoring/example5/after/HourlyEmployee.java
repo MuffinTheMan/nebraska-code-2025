@@ -17,9 +17,7 @@ public class HourlyEmployee extends Employee {
 
     @Override
     public String getPayDescription() {
-        return weeklyBonusAmount > 0
-            ? name + " from " + department + " is " + getEmployeeTypeDescriptor() + " and earns $" + calculateWeeklyPay() + " for " + hoursWorked + " hours (including a $" + weeklyBonusAmount + " weekly bonus)."
-            : name + " from " + department + " is " + getEmployeeTypeDescriptor() + " and earns $" + calculateWeeklyPay() + " for " + hoursWorked + " hours.";
+        return name + " from " + department + " is " + getEmployeeTypeDescriptor() + " and earns $" + calculateWeeklyPay() + " for " + hoursWorked + " hours" + getBonusDescription() + ".";
     }
 
     @Override

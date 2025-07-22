@@ -11,10 +11,14 @@ public abstract class Employee {
     public abstract double calculateWeeklyPay();
 
     public String getPayDescription() {
-        return weeklyBonusAmount > 0
-            ? name + " from " + department + " is " + getEmployeeTypeDescriptor() + " and earns $" + calculateWeeklyPay() + " per week (including a $" + weeklyBonusAmount + " weekly bonus)."
-            : name + " from " + department + " is " + getEmployeeTypeDescriptor() + " and earns $" + calculateWeeklyPay() + " per week.";
+        return name + " from " + department + " is " + getEmployeeTypeDescriptor() + " and earns $" + calculateWeeklyPay() + " per week" + getBonusDescription() + ".";
     }
 
     protected abstract String getEmployeeTypeDescriptor();
+
+    protected String getBonusDescription() {
+        return weeklyBonusAmount > 0
+            ? " (including a $" + weeklyBonusAmount + " weekly bonus)"
+            : "";
+    }
 }
