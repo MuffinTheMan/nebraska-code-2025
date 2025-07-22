@@ -16,5 +16,5 @@ public abstract class Employee {
             : name + " from " + department + " is " + getEmployeeTypeDescriptor() + " and earns $" + calculateWeeklyPay() + " per week.";
     }
 
-    public abstract String getEmployeeTypeDescriptor();
+    protected abstract String getEmployeeTypeDescriptor();
 }
