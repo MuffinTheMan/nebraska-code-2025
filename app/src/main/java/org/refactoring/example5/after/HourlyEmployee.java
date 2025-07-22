@@ -7,11 +7,8 @@ import org.apache.commons.math3.util.Precision;
 @Getter
 @Setter
 public class HourlyEmployee extends Employee {
-    private String name;
-    private String department;
     private double hourlyRate;
     private double hoursWorked;
-    private double weeklyBonusAmount;
 
     @Override
     public double calculateWeeklyPay() {
